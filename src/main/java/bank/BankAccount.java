@@ -20,7 +20,10 @@ public class BankAccount {
     }
 
     public boolean withdraw(double amount) {
-        // TODO: Subtract if enough balance; return true/false
+        if (balance >= amount) {
+            balance = balance - amount;
+            return true;
+        }
         return false;
     }
 }

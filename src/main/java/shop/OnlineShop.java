@@ -31,12 +31,15 @@ public class OnlineShop {
     }
 
     public boolean placeOrder(Person buyer) {
-        // TODO:
-        // 1. Check if the buyer has a cart.
-        // 2. Sum the total price of all items in the cart.
-        // 3. Use the bank to transfer the total amount from the buyer to the shop owner.
-        // 4. If successful, store the sold items for potential refund and clear the buyer's cart.
-        // 5. Return true if purchase succeeded, false otherwise.
-        return false;
+        List<ShopItem> cart = shoppingCarts.get(buyer);
+
+        double total = cart.stream().mapToDouble(ShopItem::getPrice).sum();
+
+        boolean success = bank.transfer(buyer, shopOwner, total);
+        if (!success) {
+            return false;
+        }
+
+        return true;
     }
 }

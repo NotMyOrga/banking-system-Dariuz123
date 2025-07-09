@@ -16,7 +16,7 @@ public class BankAccount {
     }
 
     public void deposit(double amount) {
-        // TODO: Add amount to balance
+        balance += amount;
     }
 
     public boolean withdraw(double amount) {

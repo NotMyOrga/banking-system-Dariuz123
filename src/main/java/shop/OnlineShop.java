@@ -27,7 +27,7 @@ public class OnlineShop {
     }
 
     public void addToCart(Person buyer, ShopItem item){
-            bankAccounts.put(person, new BankAccount(person, initialDeposit));
+        shoppingCarts.computeIfAbsent(buyer, k -> new ArrayList<>()).add(item);
     }
 
     public boolean placeOrder(Person buyer) {
